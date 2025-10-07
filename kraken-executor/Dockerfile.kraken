@@ -1,0 +1,64 @@
+# Imagen base con Java (para Appium y Android SDK)
+FROM openjdk:17-jdk-slim
+
+# Variables de entorno
+ENV ANDROID_HOME=/opt/android-sdk
+ENV PATH=$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Instalar dependencias básicas y Node.js
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl unzip wget git npm ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+# Instalar Node.js 20 y npm
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+    && apt-get install -y nodejs
+
+# Verifica versiones
+RUN node -v && npm -v
+
+# Instalar Appium globalmente
+RUN npm install -g appium
+
+# Instalar Android SDK Command-line tools
+RUN mkdir -p ${ANDROID_HOME}/cmdline-tools \
+    && cd ${ANDROID_HOME}/cmdline-tools \
+    && wget https://dl.google.com/android/repository/commandlinetools-linux-10406996_latest.zip -O tools.zip \
+    && unzip tools.zip -d temp \
+    && mv temp/cmdline-tools latest \
+    && rm -rf tools.zip temp
+
+# Aceptar licencias e instalar herramientas necesarias del SDK
+RUN yes | ${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager --licenses || true \
+    && ${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager \
+       "platform-tools" \
+       "platforms;android-34" \
+       "build-tools;34.0.0"
+
+# Agregar build-tools al PATH para que 'aapt' funcione
+ENV PATH=$PATH:$ANDROID_HOME/build-tools/34.0.0
+
+# Instalar Kraken
+RUN npm install -g kraken-node
+
+# Crear carpeta de trabajo
+WORKDIR /app
+
+# Copiar archivos del proyecto
+COPY . /app
+
+# Instalar dependencias locales del proyecto (si las hay)
+RUN if [ -f package.json ]; then npm install; fi
+
+# Verificación de herramientas instaladas (sin kraken-node -v que no existe)
+RUN java -version && \
+    adb version && \
+    aapt version && \
+    appium -v && \
+    echo "Kraken-node instalado en:" && \
+    which kraken-node && \
+    npm list -g kraken-node
+
+# Comando por defecto
+CMD ["bash"]
