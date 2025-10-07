@@ -1,0 +1,7 @@
+FROM ubuntu
+
+COPY ./test-files /tmp/files
+COPY ./ulos.sh ./opt/src/scripts/ulos.sh
+RUN chmod +x ./opt/src/scripts/ulos.sh
+ENTRYPOINT ["./opt/src/scripts/ulos.sh"]
+

@@ -1,0 +1,15 @@
+FROM cypress/browsers
+
+ENV DIRECTORY_PATH=''
+
+RUN npx cypress install
+
+COPY ./entrypoint.sh ./opt/src/scripts/entrypoint.sh
+RUN chmod +x ./opt/src/scripts/entrypoint.sh
+
+COPY ./output-parser/parse-cypress ./opt/src/scripts/parse-cypress
+RUN chmod +x ./opt/src/scripts/parse-cypress
+
+# RUN npm ci
+
+ENTRYPOINT [ "./opt/src/scripts/entrypoint.sh" ]

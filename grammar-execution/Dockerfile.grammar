@@ -1,0 +1,54 @@
+FROM alpine
+WORKDIR  /opt/src/scripts
+
+ARG GRAMMAR_DIR
+ARG ROOT_RULE
+
+# 2) Instalación de Java (ANTLR), Python + pipx + antlr4-tools
+RUN apk add --no-cache \
+    openjdk11 \
+    python3 py3-pip pipx
+RUN pipx install antlr4-tools
+
+# 3) Instalación de Go y herramientas
+RUN apk add --no-cache git make musl-dev go
+ENV GOROOT=/usr/lib/go
+ENV GOPATH=/go
+ENV PATH=/go/bin:$PATH
+
+# 4) Dependencias Go
+COPY go.mod go.sum ./
+RUN go mod tidy
+RUN go get github.com/antlr4-go/antlr/v4
+
+# 5) Copia de código fuente y plantilla de parser
+COPY main.go utils.go parser.template.go entrypoint.sh ./
+RUN chmod +x entrypoint.sh
+
+# 6) Generar el parser.go substituyendo placeholders
+RUN sh -c ' \
+  CG=$(echo "$GRAMMAR_DIR" | cut -c1 | tr "[:lower:]" "[:upper:]")$(echo "$GRAMMAR_DIR" | cut -c2-) && \
+  sed \
+    -e "s/%GRAMMAR%/$CG/g" \
+    -e "s/%ROOT_RULE%/$ROOT_RULE/g" \
+    parser.template.go > parser.go \
+'
+
+
+# 7) Copiar la gramática seleccionada
+COPY antlr-grammars/${GRAMMAR_DIR}/*.g4 ./parser/
+
+# 8) Invocar ANTLR para generar el lexer+parser Go
+RUN cd parser \
+    && /root/.local/share/pipx/venvs/antlr4-tools/bin/antlr4 -Dlanguage=Go -package parser *.g4 \
+    && cd ..
+
+# 9) Compilar el ejecutable
+RUN env GOOS=linux go build -o grammar-execution main.go utils.go parser.go
+RUN chmod +x grammar-execution
+
+# 10) Permisos y entrypoint
+COPY ./entrypoint.sh ./opt/src/scripts/entrypoint.sh
+RUN chmod +x /opt/src/scripts/entrypoint.sh
+
+ENTRYPOINT [ "/opt/src/scripts/entrypoint.sh" ]

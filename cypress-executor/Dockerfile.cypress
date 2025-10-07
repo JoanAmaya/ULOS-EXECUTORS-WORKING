@@ -1,0 +1,28 @@
+FROM cypress/included
+
+WORKDIR /opt/src/scripts
+
+RUN npx cypress install
+# Install chromium browser -> Adds ~30s to buildtime
+RUN apt update && apt install -y chromium
+
+# Install go
+RUN apt-get install -y golang-go
+ENV GOROOT=/usr/lib/go
+ENV GOPATH=/go
+ENV PATH=/go/bin:$PATH
+
+# Go dependencies
+COPY ./output-parser/go.mod ./
+RUN go mod tidy
+
+# Copy source code and executable
+COPY entrypoint.sh ./output-parser/main.go ./
+RUN chmod +x entrypoint.sh
+
+# Compile executable
+RUN env GOOS=linux go build -o parse-cypress
+RUN chmod +x  parse-cypress
+
+# ENTRYPOINT [ "/usr/bin/env" ]
+ENTRYPOINT [ "/opt/src/scripts/entrypoint.sh" ]
