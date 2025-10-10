@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "timestamp": "2025-10-10 00:17:53",
+  "detail": [
+    {
+      "filename": "my-tests/good/example1.feature",
+      "passed": true
+    },
+    {
+      "filename": "my-tests/good/example2.feature",
+      "passed": true
+    },
+    {
+      "filename": "my-tests/good/example3.feature",
+      "passed": true
+    },
+    {
+      "filename": "my-tests/good/example4.feature",
+      "passed": true
+    },
+    {
+      "filename": "my-tests/good/example5.feature",
+      "passed": true
+    }
+  ]
+}

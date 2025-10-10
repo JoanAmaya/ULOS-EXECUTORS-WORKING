@@ -1,7 +1,7 @@
 Feature: Play game kahoot
     @user1 @mobile
     Scenario: My scenario 1
-        Given I click view with ID "no.mobitroll.kahoot.android:id/nextButton"
+        When I click view with ID "no.mobitroll.kahoot.android:id/nextButton"
         And I wait for 2 seconds
         And I click view with xpath "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout/android.widget.LinearLayout[2]/android.view.ViewGroup/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.widget.TextView"
         And I wait for 2 seconds
@@ -30,7 +30,6 @@ Feature: Play game kahoot
         And I click view with ID "no.mobitroll.kahoot.android:id/doneButton"
         Then I wait
 
-    @user2 @web
     Scenario: My scenario 2
         Given I navigate to page "https://kahoot.com/"
         When I go to login
