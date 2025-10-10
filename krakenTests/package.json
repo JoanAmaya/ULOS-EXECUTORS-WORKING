@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "appium": "^2.19.0",
+    "chromedriver": "^137.0.0",
+    "kraken-node": "^1.0.24",
+    "webdriverio": "^9.20.0"
+  }
+}

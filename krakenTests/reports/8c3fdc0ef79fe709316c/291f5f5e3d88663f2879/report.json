@@ -1,0 +1,116 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "web-smoke-test-on-a-stable-page;visit-example-domain-and-follow-the-link",
+        "keyword": "Scenario",
+        "line": 4,
+        "name": "Visit Example Domain and follow the link",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "failed",
+              "duration": 25151000000,
+              "error_message": "Error: connect ECONNREFUSED 127.0.0.1:39527\n    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1611:16)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 5,
+            "name": "I open the Example Domain page",
+            "match": {
+              "location": "features/web/step_definitions/step.js:4"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 6,
+            "name": "the page title should be \"Example Domain\"",
+            "match": {
+              "location": "features/web/step_definitions/step.js:8"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "the main heading should be \"Example Domain\"",
+            "match": {
+              "location": "features/web/step_definitions/step.js:13"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 8,
+            "name": "I follow the \"Learn more\" link",
+            "match": {
+              "location": "features/web/step_definitions/step.js:19"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 9,
+            "name": "the current URL should contain \"https://www.iana.org/help/example-domains\"",
+            "match": {
+              "location": "features/web/step_definitions/step.js:26"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "failed",
+              "duration": 3000000,
+              "error_message": "TypeError: Cannot read properties of undefined (reading 'deleteSession')\n    at WebClient.<anonymous> (/app/proyecto/node_modules/kraken-node/lib/clients/WebClient.js:109:59)\n    at step (/app/proyecto/node_modules/kraken-node/lib/clients/WebClient.js:59:23)\n    at Object.next (/app/proyecto/node_modules/kraken-node/lib/clients/WebClient.js:40:53)\n    at /app/proyecto/node_modules/kraken-node/lib/clients/WebClient.js:34:71\n    at new Promise (<anonymous>)\n    at __awaiter (/app/proyecto/node_modules/kraken-node/lib/clients/WebClient.js:30:12)\n    at WebClient.stop (/app/proyecto/node_modules/kraken-node/lib/clients/WebClient.js:104:16)\n    at WebClient.<anonymous> (/app/proyecto/node_modules/kraken-node/lib/clients/Client.js:109:51)\n    at step (/app/proyecto/node_modules/kraken-node/lib/clients/Client.js:67:23)\n    at Object.next (/app/proyecto/node_modules/kraken-node/lib/clients/Client.js:48:53)\n    at fulfilled (/app/proyecto/node_modules/kraken-node/lib/clients/Client.js:39:58)"
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@user1",
+            "line": 3
+          },
+          {
+            "name": "@web",
+            "line": 3
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "web-smoke-test-on-a-stable-page",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Web smoke test on a stable page",
+    "tags": [],
+    "uri": "features/my_first.feature"
+  }
+]

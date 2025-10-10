@@ -1,0 +1,33 @@
+2025-10-10T09:31:30.881Z INFO devtools:puppeteer: Initiate new session using the DevTools protocol
+2025-10-10T09:31:30.883Z INFO devtools: Launch Google Chrome with flags: --enable-automation --disable-popup-blocking --disable-extensions --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-sync --metrics-recording-only --disable-default-apps --mute-audio --no-first-run --no-default-browser-check --disable-hang-monitor --disable-prompt-on-repost --disable-client-side-phishing-detection --password-store=basic --use-mock-keychain --disable-component-extensions-with-background-pages --disable-breakpad --disable-dev-shm-usage --disable-ipc-flooding-protection --disable-renderer-backgrounding --force-fieldtrials=*BackgroundTracing/default/ --enable-features=NetworkService,NetworkServiceInProcess --disable-features=site-per-process,TranslateUI,BlinkGenPropertyTrees --window-position=0,0 --window-size=1200,900
+F-----F
+
+Failures:
+
+1) Scenario: Visit Example Domain and follow the link # features/my_first.feature:4
+   ✖ Before # features/web/support/hooks.js:4
+       Error: connect ECONNREFUSED 127.0.0.1:58871
+           at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1611:16)
+   - Given I open the Example Domain page # features/web/step_definitions/step.js:4
+   - Then the page title should be "Example Domain" # features/web/step_definitions/step.js:8
+   - And the main heading should be "Example Domain" # features/web/step_definitions/step.js:13
+   - When I follow the "Learn more" link # features/web/step_definitions/step.js:19
+   - Then the current URL should contain "https://www.iana.org/help/example-domains" # features/web/step_definitions/step.js:26
+   ✖ After # features/web/support/hooks.js:9
+       TypeError: Cannot read properties of undefined (reading 'deleteSession')
+           at WebClient.<anonymous> (/app/proyecto/node_modules/kraken-node/lib/clients/WebClient.js:109:59)
+           at step (/app/proyecto/node_modules/kraken-node/lib/clients/WebClient.js:59:23)
+           at Object.next (/app/proyecto/node_modules/kraken-node/lib/clients/WebClient.js:40:53)
+           at /app/proyecto/node_modules/kraken-node/lib/clients/WebClient.js:34:71
+           at new Promise (<anonymous>)
+           at __awaiter (/app/proyecto/node_modules/kraken-node/lib/clients/WebClient.js:30:12)
+           at WebClient.stop (/app/proyecto/node_modules/kraken-node/lib/clients/WebClient.js:104:16)
+           at WebClient.<anonymous> (/app/proyecto/node_modules/kraken-node/lib/clients/Client.js:109:51)
+           at step (/app/proyecto/node_modules/kraken-node/lib/clients/Client.js:67:23)
+           at Object.next (/app/proyecto/node_modules/kraken-node/lib/clients/Client.js:48:53)
+           at fulfilled (/app/proyecto/node_modules/kraken-node/lib/clients/Client.js:39:58)
+
+1 scenario (1 failed)
+5 steps (5 skipped)
+0m25.170s (executing steps: 0m25.163s)
+Could not execute test

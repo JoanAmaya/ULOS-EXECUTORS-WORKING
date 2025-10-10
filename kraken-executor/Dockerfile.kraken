@@ -51,7 +51,7 @@ COPY . /app
 # Instalar dependencias locales del proyecto (si las hay)
 RUN if [ -f package.json ]; then npm install; fi
 
-# Verificación de herramientas instaladas (sin kraken-node -v que no existe)
+# Verificación de herramientas instaladas
 RUN java -version && \
     adb version && \
     aapt version && \
@@ -60,5 +60,30 @@ RUN java -version && \
     which kraken-node && \
     npm list -g kraken-node
 
+# --- Google Chrome estable para headless en contenedor ---
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    wget gnupg ca-certificates \
+    fonts-liberation \
+    libasound2 \
+    libatk-bridge2.0-0 libatk1.0-0 \
+    libc6 libdrm2 libgbm1 \
+    libgtk-3-0 \
+    libnspr4 libnss3 libu2f-udev \
+    libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxdamage1 libxext6 libxfixes3 libxrandr2 libxshmfence1 \
+ && rm -rf /var/lib/apt/lists/* \
+ && wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
+ && apt-get update && apt-get install -y ./google-chrome-stable_current_amd64.deb \
+ && rm -f google-chrome-stable_current_amd64.deb
+
+ENV CHROME_PATH=/usr/bin/google-chrome
+ENV HEADLESS=1
+
+# Copiar entrypoint
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+RUN apt-get update && apt-get install -y xvfb
+ENV DISPLAY=:99
+
 # Comando por defecto
-CMD ["bash"]
+ENTRYPOINT ["/entrypoint.sh"]
