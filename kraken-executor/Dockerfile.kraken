@@ -1,5 +1,5 @@
 # Imagen base con Java (para Appium y Android SDK)
-FROM openjdk:17-jdk-slim
+FROM eclipse-temurin:17
 
 # Variables de entorno
 ENV ANDROID_HOME=/opt/android-sdk
@@ -42,12 +42,6 @@ ENV PATH=$PATH:$ANDROID_HOME/build-tools/34.0.0
 # Instalar Kraken
 RUN npm install -g kraken-node
 
-# Crear carpeta de trabajo
-WORKDIR /app
-
-# Copiar archivos del proyecto
-COPY . /app
-
 # Instalar dependencias locales del proyecto (si las hay)
 RUN if [ -f package.json ]; then npm install; fi
 
@@ -64,26 +58,49 @@ RUN java -version && \
 RUN apt-get update && apt-get install -y --no-install-recommends \
     wget gnupg ca-certificates \
     fonts-liberation \
-    libasound2 \
+    libasound2t64 \
     libatk-bridge2.0-0 libatk1.0-0 \
     libc6 libdrm2 libgbm1 \
     libgtk-3-0 \
-    libnspr4 libnss3 libu2f-udev \
-    libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxdamage1 libxext6 libxfixes3 libxrandr2 libxshmfence1 \
- && rm -rf /var/lib/apt/lists/* \
- && wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
- && apt-get update && apt-get install -y ./google-chrome-stable_current_amd64.deb \
- && rm -f google-chrome-stable_current_amd64.deb
+    libnspr4 libnss3 libu2f-udev libvulkan1 \
+    libx11-6 libx11-xcb1 libxcb1 libxcomposite1 \
+    libxdamage1 libxext6 libxfixes3 libxrandr2 \
+    libxshmfence1 xvfb \
+    && rm -rf /var/lib/apt/lists/* \
+    && wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
+    && apt-get update && apt-get install -y ./google-chrome-stable_current_amd64.deb \
+    && rm -f google-chrome-stable_current_amd64.deb
+# Instalar ChromeDriver compatible con la versión de Chrome
+RUN CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+') && \
+    CHROME_MAJOR_VERSION=$(echo $CHROME_VERSION | cut -d. -f1) && \
+    echo "Chrome version: $CHROME_VERSION (Major: $CHROME_MAJOR_VERSION)" && \
+    CHROMEDRIVER_VERSION=$(curl -s "https://googlechromelabs.github.io/chrome-for-testing/LATEST_RELEASE_$CHROME_MAJOR_VERSION") && \
+    echo "Installing ChromeDriver version: $CHROMEDRIVER_VERSION" && \
+    wget -q "https://storage.googleapis.com/chrome-for-testing-public/$CHROMEDRIVER_VERSION/linux64/chromedriver-linux64.zip" -O /tmp/chromedriver.zip && \
+    unzip -q /tmp/chromedriver.zip -d /tmp && \
+    mv /tmp/chromedriver-linux64/chromedriver /usr/local/bin/chromedriver && \
+    chmod +x /usr/local/bin/chromedriver && \
+    rm -rf /tmp/chromedriver* && \
+    chromedriver --version
 
 ENV CHROME_PATH=/usr/bin/google-chrome
 ENV HEADLESS=1
+RUN apt-get update && apt-get install -y xvfb
+ENV DISPLAY=:99
+ENV NODE_PATH=/app/node_modules
+
+# Crear carpeta de trabajo
+WORKDIR /app
+
+# Copiar archivos del proyecto
+COPY . /app
+
 
 # Copiar entrypoint
 COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+RUN sed -i 's/\r$//' /entrypoint.sh && chmod +x /entrypoint.sh
 
-RUN apt-get update && apt-get install -y xvfb
-ENV DISPLAY=:99
+
 
 # Comando por defecto
 ENTRYPOINT ["/entrypoint.sh"]

@@ -1,33 +1,36 @@
-2025-10-10T09:31:30.881Z INFO devtools:puppeteer: Initiate new session using the DevTools protocol
-2025-10-10T09:31:30.883Z INFO devtools: Launch Google Chrome with flags: --enable-automation --disable-popup-blocking --disable-extensions --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-sync --metrics-recording-only --disable-default-apps --mute-audio --no-first-run --no-default-browser-check --disable-hang-monitor --disable-prompt-on-repost --disable-client-side-phishing-detection --password-store=basic --use-mock-keychain --disable-component-extensions-with-background-pages --disable-breakpad --disable-dev-shm-usage --disable-ipc-flooding-protection --disable-renderer-backgrounding --force-fieldtrials=*BackgroundTracing/default/ --enable-features=NetworkService,NetworkServiceInProcess --disable-features=site-per-process,TranslateUI,BlinkGenPropertyTrees --window-position=0,0 --window-size=1200,900
-F-----F
+2025-11-24T03:34:52.662Z INFO devtools:puppeteer: Initiate new session using the DevTools protocol
+2025-11-24T03:34:52.663Z INFO devtools: Launch Google Chrome with flags: --enable-automation --disable-popup-blocking --disable-extensions --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-sync --metrics-recording-only --disable-default-apps --mute-audio --no-first-run --no-default-browser-check --disable-hang-monitor --disable-prompt-on-repost --disable-client-side-phishing-detection --password-store=basic --use-mock-keychain --disable-component-extensions-with-background-pages --disable-breakpad --disable-dev-shm-usage --disable-ipc-flooding-protection --disable-renderer-backgrounding --force-fieldtrials=*BackgroundTracing/default/ --enable-features=NetworkService,NetworkServiceInProcess --disable-features=site-per-process,TranslateUI,BlinkGenPropertyTrees --window-position=0,0 --window-size=1200,900 --headless=new --no-sandbox --disable-dev-shm-usage --disable-gpu --disable-software-rasterizer --window-size=1200,900 --remote-allow-origins=*
+2025-11-24T03:34:53.736Z INFO devtools: Connect Puppeteer with browser on port 46771
+.2025-11-24T03:34:56.046Z INFO devtools: COMMAND navigateTo("https://example.com/")
+2025-11-24T03:34:56.451Z INFO devtools: RESULT null
+2025-11-24T03:34:56.468Z INFO devtools: COMMAND takeScreenshot()
+2025-11-24T03:34:56.524Z INFO devtools: RESULT iVBORw0KGgoAAAANSUhEUgAABLAAAAL5CAIAAAAvxEoGAAAQAElEQVR4nOzdf...
+.2025-11-24T03:34:56.529Z INFO devtools: COMMAND getTitle()
+2025-11-24T03:34:56.531Z INFO devtools: RESULT Example Domain
+2025-11-24T03:34:56.534Z INFO devtools: COMMAND takeScreenshot()
+2025-11-24T03:34:56.570Z INFO devtools: RESULT iVBORw0KGgoAAAANSUhEUgAABLAAAAL5CAIAAAAvxEoGAAAQAElEQVR4nOzdf...
+.2025-11-24T03:34:56.577Z INFO devtools: COMMAND findElement("css selector", "h1")
+2025-11-24T03:34:56.580Z INFO devtools: RESULT { 'element-6066-11e4-a52e-4f735466cecf': 'ELEMENT-1' }
+2025-11-24T03:34:56.588Z INFO devtools: COMMAND getElementText("ELEMENT-1")
+2025-11-24T03:34:56.594Z INFO devtools: RESULT Example Domain
+2025-11-24T03:34:56.596Z INFO devtools: COMMAND takeScreenshot()
+2025-11-24T03:34:56.638Z INFO devtools: RESULT iVBORw0KGgoAAAANSUhEUgAABLAAAAL5CAIAAAAvxEoGAAAQAElEQVR4nOzdf...
+.2025-11-24T03:34:56.646Z INFO devtools: COMMAND findElement("xpath", ".//a[normalize-space() = "Learn more"]")
+2025-11-24T03:34:56.664Z INFO devtools: RESULT { 'element-6066-11e4-a52e-4f735466cecf': 'ELEMENT-2' }
+2025-11-24T03:34:56.668Z INFO devtools: COMMAND findElements("xpath", ".//a[normalize-space() = "Learn more"]")
+2025-11-24T03:34:56.670Z INFO devtools: RESULT [ { 'element-6066-11e4-a52e-4f735466cecf': 'ELEMENT-3' } ]
+2025-11-24T03:34:56.673Z INFO devtools: COMMAND elementClick("ELEMENT-2")
+2025-11-24T03:34:56.705Z INFO devtools: RESULT null
+2025-11-24T03:34:58.762Z INFO devtools: COMMAND takeScreenshot()
+2025-11-24T03:34:58.821Z INFO devtools: RESULT iVBORw0KGgoAAAANSUhEUgAABLAAAAM/CAIAAABOArwbAAAQAElEQVR4nOzdD...
+.2025-11-24T03:34:58.827Z INFO devtools: COMMAND getUrl()
+2025-11-24T03:34:58.830Z INFO devtools: RESULT https://www.iana.org/help/example-domains
+2025-11-24T03:34:58.832Z INFO devtools: COMMAND takeScreenshot()
+2025-11-24T03:34:58.886Z INFO devtools: RESULT iVBORw0KGgoAAAANSUhEUgAABLAAAAM/CAIAAABOArwbAAAQAElEQVR4nOzdD...
+.2025-11-24T03:34:58.895Z INFO devtools: COMMAND deleteSession()
+2025-11-24T03:34:58.897Z INFO devtools: RESULT null
+.
 
-Failures:
-
-1) Scenario: Visit Example Domain and follow the link # features/my_first.feature:4
-   ✖ Before # features/web/support/hooks.js:4
-       Error: connect ECONNREFUSED 127.0.0.1:58871
-           at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1611:16)
-   - Given I open the Example Domain page # features/web/step_definitions/step.js:4
-   - Then the page title should be "Example Domain" # features/web/step_definitions/step.js:8
-   - And the main heading should be "Example Domain" # features/web/step_definitions/step.js:13
-   - When I follow the "Learn more" link # features/web/step_definitions/step.js:19
-   - Then the current URL should contain "https://www.iana.org/help/example-domains" # features/web/step_definitions/step.js:26
-   ✖ After # features/web/support/hooks.js:9
-       TypeError: Cannot read properties of undefined (reading 'deleteSession')
-           at WebClient.<anonymous> (/app/proyecto/node_modules/kraken-node/lib/clients/WebClient.js:109:59)
-           at step (/app/proyecto/node_modules/kraken-node/lib/clients/WebClient.js:59:23)
-           at Object.next (/app/proyecto/node_modules/kraken-node/lib/clients/WebClient.js:40:53)
-           at /app/proyecto/node_modules/kraken-node/lib/clients/WebClient.js:34:71
-           at new Promise (<anonymous>)
-           at __awaiter (/app/proyecto/node_modules/kraken-node/lib/clients/WebClient.js:30:12)
-           at WebClient.stop (/app/proyecto/node_modules/kraken-node/lib/clients/WebClient.js:104:16)
-           at WebClient.<anonymous> (/app/proyecto/node_modules/kraken-node/lib/clients/Client.js:109:51)
-           at step (/app/proyecto/node_modules/kraken-node/lib/clients/Client.js:67:23)
-           at Object.next (/app/proyecto/node_modules/kraken-node/lib/clients/Client.js:48:53)
-           at fulfilled (/app/proyecto/node_modules/kraken-node/lib/clients/Client.js:39:58)
-
-1 scenario (1 failed)
-5 steps (5 skipped)
-0m25.170s (executing steps: 0m25.163s)
-Could not execute test
+1 scenario (1 passed)
+5 steps (5 passed)
+0m06.289s (executing steps: 0m06.278s)

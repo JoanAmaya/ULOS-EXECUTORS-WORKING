@@ -2,7 +2,7 @@
 set -e
 
 PROJECT_PATH="$1"
-
+npx kraken-node doctor
 # Validar argumento
 if [ -z "$PROJECT_PATH" ]; then
   echo "Debes pasar la ruta del proyecto Kraken como argumento"

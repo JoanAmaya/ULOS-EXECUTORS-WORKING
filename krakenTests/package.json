@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@cucumber/cucumber": "^7.2.1",
     "appium": "^2.19.0",
     "chromedriver": "^137.0.0",
     "kraken-node": "^1.0.24",
