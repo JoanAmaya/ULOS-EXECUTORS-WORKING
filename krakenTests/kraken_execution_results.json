@@ -1,0 +1,26 @@
+{
+  "kraken_version": "Unknown",
+  "browser": "Google Chrome (headless)",
+  "device": "kraken",
+  "features": "1 feature(s)",
+  "passed": false,
+  "timestamp": "2025-11-30 02:59:17",
+  "has_screenshots": true,
+  "screenshots_location": "/kraken/screenshots/",
+  "execution_time": "0m04.776s",
+  "detail": [
+    {
+      "feature_name": "kraken_output",
+      "scenarios_total": 1,
+      "scenarios_passed": 0,
+      "scenarios_failed": 1,
+      "scenarios_skipped": 0,
+      "steps_total": 5,
+      "steps_passed": 4,
+      "steps_failed": 1,
+      "steps_skipped": 0,
+      "execution_time": "0m04.776s",
+      "result": false
+    }
+  ]
+}

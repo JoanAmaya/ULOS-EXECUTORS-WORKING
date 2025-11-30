@@ -6,4 +6,4 @@ Scenario: Visit Example Domain and follow the link
   Then the page title should be "Example Domain"
   And the main heading should be "Example Domain"
   When I follow the "Learn more" link
-  Then the current URL should contain "https://www.iana.org/help/example-domains"
+  Then the current URL should contain "https://www.pordfilvknsdokfjwpéf/help/example-domains"

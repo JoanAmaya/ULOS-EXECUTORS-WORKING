@@ -1,36 +1,61 @@
-2025-11-30T02:40:02.044Z INFO devtools:puppeteer: Initiate new session using the DevTools protocol
-2025-11-30T02:40:02.045Z INFO devtools: Launch Google Chrome with flags: --enable-automation --disable-popup-blocking --disable-extensions --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-sync --metrics-recording-only --disable-default-apps --mute-audio --no-first-run --no-default-browser-check --disable-hang-monitor --disable-prompt-on-repost --disable-client-side-phishing-detection --password-store=basic --use-mock-keychain --disable-component-extensions-with-background-pages --disable-breakpad --disable-dev-shm-usage --disable-ipc-flooding-protection --disable-renderer-backgrounding --force-fieldtrials=*BackgroundTracing/default/ --enable-features=NetworkService,NetworkServiceInProcess --disable-features=site-per-process,TranslateUI,BlinkGenPropertyTrees --window-position=0,0 --window-size=1200,900 --headless=new --no-sandbox --disable-dev-shm-usage --disable-gpu --disable-software-rasterizer --window-size=1200,900 --remote-allow-origins=*
-2025-11-30T02:40:02.606Z INFO devtools: Connect Puppeteer with browser on port 37013
-.2025-11-30T02:40:03.893Z INFO devtools: COMMAND navigateTo("https://example.com/")
-2025-11-30T02:40:04.266Z INFO devtools: RESULT null
-2025-11-30T02:40:04.272Z INFO devtools: COMMAND takeScreenshot()
-2025-11-30T02:40:04.316Z INFO devtools: RESULT iVBORw0KGgoAAAANSUhEUgAABLAAAAMtCAIAAAAAHB+LAAAQAElEQVR4nOzdf...
-.2025-11-30T02:40:04.321Z INFO devtools: COMMAND getTitle()
-2025-11-30T02:40:04.322Z INFO devtools: RESULT Example Domain
-2025-11-30T02:40:04.326Z INFO devtools: COMMAND takeScreenshot()
-2025-11-30T02:40:04.360Z INFO devtools: RESULT iVBORw0KGgoAAAANSUhEUgAABLAAAAMtCAIAAAAAHB+LAAAQAElEQVR4nOzdf...
-.2025-11-30T02:40:04.366Z INFO devtools: COMMAND findElement("css selector", "h1")
-2025-11-30T02:40:04.368Z INFO devtools: RESULT { 'element-6066-11e4-a52e-4f735466cecf': 'ELEMENT-1' }
-2025-11-30T02:40:04.373Z INFO devtools: COMMAND getElementText("ELEMENT-1")
-2025-11-30T02:40:04.377Z INFO devtools: RESULT Example Domain
-2025-11-30T02:40:04.379Z INFO devtools: COMMAND takeScreenshot()
-2025-11-30T02:40:04.429Z INFO devtools: RESULT iVBORw0KGgoAAAANSUhEUgAABLAAAAMtCAIAAAAAHB+LAAAQAElEQVR4nOzdf...
-.2025-11-30T02:40:04.433Z INFO devtools: COMMAND findElement("xpath", ".//a[normalize-space() = "Learn more"]")
-2025-11-30T02:40:04.438Z INFO devtools: RESULT { 'element-6066-11e4-a52e-4f735466cecf': 'ELEMENT-2' }
-2025-11-30T02:40:04.441Z INFO devtools: COMMAND findElements("xpath", ".//a[normalize-space() = "Learn more"]")
-2025-11-30T02:40:04.443Z INFO devtools: RESULT [ { 'element-6066-11e4-a52e-4f735466cecf': 'ELEMENT-3' } ]
-2025-11-30T02:40:04.445Z INFO devtools: COMMAND elementClick("ELEMENT-2")
-2025-11-30T02:40:04.488Z INFO devtools: RESULT null
-2025-11-30T02:40:07.333Z INFO devtools: COMMAND takeScreenshot()
-2025-11-30T02:40:07.392Z INFO devtools: RESULT iVBORw0KGgoAAAANSUhEUgAABLAAAAM/CAIAAABOArwbAAAQAElEQVR4nOzdD...
-.2025-11-30T02:40:07.397Z INFO devtools: COMMAND getUrl()
-2025-11-30T02:40:07.400Z INFO devtools: RESULT https://www.iana.org/help/example-domains
-2025-11-30T02:40:07.403Z INFO devtools: COMMAND takeScreenshot()
-2025-11-30T02:40:07.456Z INFO devtools: RESULT iVBORw0KGgoAAAANSUhEUgAABLAAAAM/CAIAAABOArwbAAAQAElEQVR4nOzdD...
-.2025-11-30T02:40:07.469Z INFO devtools: COMMAND deleteSession()
-2025-11-30T02:40:07.471Z INFO devtools: RESULT null
+2025-11-30T02:59:12.437Z INFO devtools:puppeteer: Initiate new session using the DevTools protocol
+2025-11-30T02:59:12.438Z INFO devtools: Launch Google Chrome with flags: --enable-automation --disable-popup-blocking --disable-extensions --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-sync --metrics-recording-only --disable-default-apps --mute-audio --no-first-run --no-default-browser-check --disable-hang-monitor --disable-prompt-on-repost --disable-client-side-phishing-detection --password-store=basic --use-mock-keychain --disable-component-extensions-with-background-pages --disable-breakpad --disable-dev-shm-usage --disable-ipc-flooding-protection --disable-renderer-backgrounding --force-fieldtrials=*BackgroundTracing/default/ --enable-features=NetworkService,NetworkServiceInProcess --disable-features=site-per-process,TranslateUI,BlinkGenPropertyTrees --window-position=0,0 --window-size=1200,900 --headless=new --no-sandbox --disable-dev-shm-usage --disable-gpu --disable-software-rasterizer --window-size=1200,900 --remote-allow-origins=*
+2025-11-30T02:59:12.988Z INFO devtools: Connect Puppeteer with browser on port 33909
+.2025-11-30T02:59:14.040Z INFO devtools: COMMAND navigateTo("https://example.com/")
+2025-11-30T02:59:14.439Z INFO devtools: RESULT null
+2025-11-30T02:59:14.443Z INFO devtools: COMMAND takeScreenshot()
+2025-11-30T02:59:14.510Z INFO devtools: RESULT iVBORw0KGgoAAAANSUhEUgAABLAAAAMtCAIAAAAAHB+LAAAQAElEQVR4nOzdf...
+.2025-11-30T02:59:14.518Z INFO devtools: COMMAND getTitle()
+2025-11-30T02:59:14.519Z INFO devtools: RESULT Example Domain
+2025-11-30T02:59:14.521Z INFO devtools: COMMAND takeScreenshot()
+2025-11-30T02:59:14.573Z INFO devtools: RESULT iVBORw0KGgoAAAANSUhEUgAABLAAAAMtCAIAAAAAHB+LAAAQAElEQVR4nOzdf...
+.2025-11-30T02:59:14.581Z INFO devtools: COMMAND findElement("css selector", "h1")
+2025-11-30T02:59:14.583Z INFO devtools: RESULT { 'element-6066-11e4-a52e-4f735466cecf': 'ELEMENT-1' }
+2025-11-30T02:59:14.589Z INFO devtools: COMMAND getElementText("ELEMENT-1")
+2025-11-30T02:59:14.592Z INFO devtools: RESULT Example Domain
+2025-11-30T02:59:14.594Z INFO devtools: COMMAND takeScreenshot()
+2025-11-30T02:59:14.656Z INFO devtools: RESULT iVBORw0KGgoAAAANSUhEUgAABLAAAAMtCAIAAAAAHB+LAAAQAElEQVR4nOzdf...
+.2025-11-30T02:59:14.666Z INFO devtools: COMMAND findElement("xpath", ".//a[normalize-space() = "Learn more"]")
+2025-11-30T02:59:14.668Z INFO devtools: RESULT { 'element-6066-11e4-a52e-4f735466cecf': 'ELEMENT-2' }
+2025-11-30T02:59:14.670Z INFO devtools: COMMAND findElements("xpath", ".//a[normalize-space() = "Learn more"]")
+2025-11-30T02:59:14.672Z INFO devtools: RESULT [ { 'element-6066-11e4-a52e-4f735466cecf': 'ELEMENT-3' } ]
+2025-11-30T02:59:14.675Z INFO devtools: COMMAND elementClick("ELEMENT-2")
+2025-11-30T02:59:14.711Z INFO devtools: RESULT null
+2025-11-30T02:59:16.999Z INFO devtools: COMMAND takeScreenshot()
+2025-11-30T02:59:17.070Z INFO devtools: RESULT iVBORw0KGgoAAAANSUhEUgAABLAAAAM/CAIAAABOArwbAAAQAElEQVR4nOzdD...
+.2025-11-30T02:59:17.077Z INFO devtools: COMMAND getUrl()
+2025-11-30T02:59:17.079Z INFO devtools: RESULT https://www.iana.org/help/example-domains
+2025-11-30T02:59:17.082Z INFO devtools: COMMAND takeScreenshot()
+2025-11-30T02:59:17.136Z INFO devtools: RESULT iVBORw0KGgoAAAANSUhEUgAABLAAAAM/CAIAAABOArwbAAAQAElEQVR4nOzdD...
+F2025-11-30T02:59:17.165Z INFO devtools: COMMAND deleteSession()
+2025-11-30T02:59:17.166Z INFO devtools: RESULT null
 .
 
-1 scenario (1 passed)
-5 steps (5 passed)
-0m05.479s (executing steps: 0m05.473s)
+Failures:
+
+1) Scenario: Visit Example Domain and follow the link # features/my_first.feature:4
+   ✔ Before # features/web/support/hooks.js:4
+   ✔ Given I open the Example Domain page # features/web/step_definitions/step.js:4
+       Attachment (image/png)
+   ✔ Then the page title should be "Example Domain" # features/web/step_definitions/step.js:8
+       Attachment (image/png)
+   ✔ And the main heading should be "Example Domain" # features/web/step_definitions/step.js:13
+       Attachment (image/png)
+   ✔ When I follow the "Learn more" link # features/web/step_definitions/step.js:19
+       Attachment (image/png)
+   ✖ Then the current URL should contain "https://www.pordfilvknsdokfjwpéf/help/example-domains" # features/web/step_definitions/step.js:26
+       Attachment (image/png)
+       AssertionError [ERR_ASSERTION]: Expected URL to contain "https://www.pordfilvknsdokfjwpéf/help/example-domains", got "https://www.iana.org/help/example-domains"
+           + expected - actual
+
+           -false
+           +true
+
+           at KrakenWorld.<anonymous> (/app/proyecto/features/web/step_definitions/step.js:28:10)
+           at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+   ✔ After # features/web/support/hooks.js:24
+
+1 scenario (1 failed)
+5 steps (1 failed, 4 passed)
+0m04.776s (executing steps: 0m04.773s)
+Could not execute test
